@@ -1,46 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
 
-  <!-- iOS meta tags & icons -->
+  <!-- Browser compatibility -->
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+
+  <!-- Primary SEO -->
+  <meta name="description"
+    content="HachimyDev — Developer, gamer and digital creator. Explore web development, Flutter projects, gaming content and services.">
+  <meta name="keywords"
+    content="HachimyDev, Flutter Developer, Web Developer, Flutter Web, Game Content, Genshin Impact, Zenless Zone Zero, Honkai Star Rail, Wuthering Waves">
+  <meta name="author" content="HachimyDev">
+
+  <!-- Responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0D0D12">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Mobile Web App -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="hachimdev">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="HachimyDev">
+
+  <!-- Apple Touch Icon -->
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png">
 
-  <title>hachimdev</title>
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HachimyDev — Developer & Digital Creator">
+  <meta property="og:description"
+    content="Explore HachimyDev's development projects, services, gaming content and digital experiences.">
+  <meta property="og:image" content="icons/Icon-512.png">
+
+  <!-- Twitter / X Sharing -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HachimyDev — Developer & Digital Creator">
+  <meta name="twitter:description"
+    content="Developer, gamer and digital creator. Explore projects, services and gaming content.">
+  <meta name="twitter:image" content="icons/Icon-512.png">
+
+  <!-- Web App Manifest -->
   <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <title>HachimyDev — Developer & Digital Creator</title>
+
+  <!-- Prevent flash of unstyled background -->
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #0D0D12;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Flutter loading screen */
+    #loading {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      background: #0D0D12;
+      color: #F5F5F7;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    .loading-logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .loading-subtitle {
+      color: #A7A7B2;
+      font-size: 13px;
+    }
+
+    .loading-spinner {
+      width: 30px;
+      height: 30px;
+      border: 3px solid rgba(124, 92, 252, 0.2);
+      border-top-color: #7C5CFC;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Flutter loading screen -->
+  <div id="loading">
+    <div class="loading-logo">HachimyDev</div>
+    <div class="loading-spinner"></div>
+    <div class="loading-subtitle">
+      Loading digital experience...
+    </div>
+  </div>
+
+  <!-- Flutter -->
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      const loading = document.getElementById('loading');
+
+      if (loading) {
+        loading.style.opacity = '0';
+        loading.style.transition = 'opacity 0.3s ease';
+
+        setTimeout(() => {
+          loading.remove();
+        }, 300);
+      }
+    });
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
+
 </body>
+
 </html>
