@@ -1,12 +1,12 @@
 {
-    "name": "hachimdev",
-    "short_name": "hachimdev",
+    "name": "HachimyDev",
+    "short_name": "HachimyDev",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0D0D12",
     "theme_color": "#0D0D12",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "description": "Explore MaiBeli, Flutter and web development, and game progress services by HachimyDev.",
+    "id": ".",
     "prefer_related_applications": false,
     "icons": [
         {

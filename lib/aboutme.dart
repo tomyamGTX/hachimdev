@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hachimdev/home/components/page_back_button.dart';
 
 class Aboutme extends StatelessWidget {
   const Aboutme({super.key});
@@ -13,6 +14,9 @@ class Aboutme extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
+        leadingWidth: 64,
+        leading: const PageBackButton(),
+        titleSpacing: 12,
         backgroundColor: backgroundColor,
         elevation: 0,
         centerTitle: false,

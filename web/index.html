@@ -3,7 +3,7 @@
 
 <head>
   <base href="$FLUTTER_BASE_HREF">
-
+  <meta name="google-site-verification" content="OOnNYHobjaNw9K4v2o0KklTZLmV5GV6tnxKnqXCKukI" />
   <meta charset="UTF-8">
 
   <!-- Browser compatibility -->
@@ -11,13 +11,16 @@
 
   <!-- Primary SEO -->
   <meta name="description"
-    content="HachimyDev — Developer, gamer and digital creator. Explore web development, Flutter projects, gaming content and services.">
+    content="HachimyDev is a Malaysian developer and digital creator. Discover MaiBeli on Google Play, Flutter and web development, and game progress services.">
   <meta name="keywords"
-    content="HachimyDev, Flutter Developer, Web Developer, Flutter Web, Game Content, Genshin Impact, Zenless Zone Zero, Honkai Star Rail, Wuthering Waves">
+    content="HachimyDev, Flutter Developer, Web Developer, Flutter Web, Game Content, Genshin Impact, Zenless Zone Zero, Honkai Star Rail, Honkai Impact 3rd, Wuthering Waves">
   <meta name="author" content="HachimyDev">
 
+  <meta name="robots" content="index, follow">
+  <meta property="og:site_name" content="HachimyDev">
+
   <!-- Responsive design -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Theme -->
   <meta name="theme-color" content="#0D0D12">
@@ -29,29 +32,52 @@
   <meta name="apple-mobile-web-app-title" content="HachimyDev">
 
   <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png?v=2">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="HachimyDev — Developer & Digital Creator">
+  <meta property="og:title" content="HachimyDev | Flutter & Web Developer | MaiBeli">
   <meta property="og:description"
-    content="Explore HachimyDev's development projects, services, gaming content and digital experiences.">
+    content="Discover MaiBeli on Google Play, Flutter and web development, and game progress services by HachimyDev.">
   <meta property="og:image" content="icons/Icon-512.png">
 
   <!-- Twitter / X Sharing -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="HachimyDev — Developer & Digital Creator">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HachimyDev | Flutter & Web Developer | MaiBeli">
   <meta name="twitter:description"
-    content="Developer, gamer and digital creator. Explore projects, services and gaming content.">
+    content="Discover MaiBeli on Google Play, Flutter and web development, and game progress services by HachimyDev.">
   <meta name="twitter:image" content="icons/Icon-512.png">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "HachimyDev — Developer & Digital Creator",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "HachimyDev",
+        "jobTitle": "Flutter and Web Developer",
+        "knowsAbout": ["Flutter", "Dart", "Web development"],
+        "subjectOf": {
+          "@type": "SoftwareApplication",
+          "name": "MaiBeli",
+          "operatingSystem": "Android",
+          "installUrl": "https://play.google.com/store/apps/details?id=hachimy.app.maibeli"
+        }
+      }
+    }
+  </script>
 
   <!-- Web App Manifest -->
   <link rel="manifest" href="manifest.json">
 
-  <title>HachimyDev — Developer & Digital Creator</title>
+  <title>HachimyDev | Flutter & Web Developer | MaiBeli</title>
 
   <!-- Prevent flash of unstyled background -->
   <style>
@@ -89,6 +115,11 @@
         sans-serif;
     }
 
+    .loading-icon {
+      width: 72px;
+      height: 72px;
+    }
+
     .loading-logo {
       font-size: 28px;
       font-weight: 800;
@@ -121,6 +152,7 @@
 
   <!-- Flutter loading screen -->
   <div id="loading">
+    <img class="loading-icon" src="icons/Icon-192.png" alt="HachimyDev circular H logo" width="72" height="72">
     <div class="loading-logo">HachimyDev</div>
     <div class="loading-spinner"></div>
     <div class="loading-subtitle">
@@ -144,6 +176,7 @@
     });
   </script>
 
+  <script src="cursor-trail.js" defer></script>
   <script src="flutter_bootstrap.js" async></script>
 
 </body>

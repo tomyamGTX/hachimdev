@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hachimdev/home/components/customer_showcase.dart';
+import 'package:hachimdev/home/components/page_back_button.dart';
 
 // ============================================================
 // HACHIMYDEV THEME
@@ -23,6 +25,9 @@ class GameservicePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
+        leadingWidth: 64,
+        leading: const PageBackButton(),
+        titleSpacing: 12,
         backgroundColor: backgroundColor,
         foregroundColor: textPrimaryColor,
         elevation: 0,
@@ -181,6 +186,12 @@ class GameservicePage extends StatelessWidget {
         title: 'Honkai: Star Rail',
         shortName: 'HSR',
         description: 'Trailblaze missions, side content, events, dailies and progression.',
+      ),
+      _GameData(
+        title: 'Honkai Impact 3rd',
+        shortName: 'HI3',
+        description:
+            'Story progression, events, daily tasks and other progression goals.',
       ),
       _GameData(
         title: 'Wuthering Waves',
@@ -514,199 +525,8 @@ class GameservicePage extends StatelessWidget {
   // TESTIMONIALS
   // ============================================================
 
-  Widget _buildTestimonialSection(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 700;
-
-    return _buildSection(
-      title: 'Client Feedback',
-      subtitle:
-          'Feedback from customers who have used my game progress services.',
-      child: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(isMobile ? 24 : 36),
-        decoration: BoxDecoration(
-          color: cardColor,
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: secondaryColor.withValues(alpha: 0.12)),
-        ),
-        child: isMobile
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildTestimonialImage(),
-                  const SizedBox(height: 24),
-                  _buildTestimonialContent(),
-                  const SizedBox(height: 32),
-                  _buildTestimonialImage2(),
-                  const SizedBox(height: 24),
-                  _buildTestimonialContent2(),
-                ],
-              )
-            : Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      _buildTestimonialImage(),
-
-                      const SizedBox(width: 32),
-
-                      Expanded(child: _buildTestimonialContent()),
-                    ],
-                  ),
-                  const SizedBox(height: 32),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      _buildTestimonialImage2(),
-
-                      const SizedBox(width: 32),
-
-                      Expanded(child: _buildTestimonialContent2()),
-                    ],
-                  ),
-                ],
-              ),
-      ),
-    );
-  }
-
-  Widget _buildTestimonialImage() {
-    return Container(
-      width: 110,
-      height: 110,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: primaryColor.withValues(alpha: 0.35),
-          width: 2,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: primaryColor.withValues(alpha: 0.15),
-            blurRadius: 25,
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.asset('assets/clear.png', fit: BoxFit.cover),
-      ),
-    );
-  }
-
-  Widget _buildTestimonialImage2() {
-    return Container(
-      width: 110,
-      height: 110,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: primaryColor.withValues(alpha: 0.35),
-          width: 2,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: primaryColor.withValues(alpha: 0.15),
-            blurRadius: 25,
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.asset('assets/clear2.png', fit: BoxFit.cover),
-      ),
-    );
-  }
-
-  _buildTestimonialContent2() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: List.generate(
-            5,
-            (index) => const Icon(
-              Icons.star_rounded,
-              color: Color(0xFFFFC857),
-              size: 20,
-            ),
-          ),
-        ),
-
-        const SizedBox(height: 16),
-
-        const Text(
-          '"The service was excellent! '
-          'I was able to enjoy the game while my progress was handled efficiently."',
-          style: TextStyle(
-            color: textPrimaryColor,
-            fontSize: 18,
-            height: 1.6,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-
-        const SizedBox(height: 18),
-
-        const Text(
-          'Genshin Impact Client',
-          style: TextStyle(
-            color: textSecondaryColor,
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildTestimonialContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: List.generate(
-            5,
-            (index) => const Icon(
-              Icons.star_rounded,
-              color: Color(0xFFFFC857),
-              size: 20,
-            ),
-          ),
-        ),
-
-        const SizedBox(height: 16),
-
-        const Text(
-          '"Great service and smooth progress. '
-          'The requested quests and tasks were completed '
-          'while I was away."',
-          style: TextStyle(
-            color: textPrimaryColor,
-            fontSize: 18,
-            height: 1.6,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-
-        const SizedBox(height: 18),
-
-        const Text(
-          'Game Progress Service Client',
-          style: TextStyle(
-            color: textSecondaryColor,
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-
-  // ============================================================
-  // SECTION
-  // ============================================================
+  Widget _buildTestimonialSection(BuildContext context) =>
+      const CustomerShowcase();
 
   Widget _buildSection({
     required String title,

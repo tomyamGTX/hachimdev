@@ -53,10 +53,10 @@ Widget buildNavigationSection({required bool isMobile}) {
       title: 'Development Services',
       subtitle: 'FOR BUSINESSES & CREATORS',
       description:
-          'Explore my web development capabilities and solutions for '
-          'businesses, creators, and personal projects.',
+          'Discover MaiBeli, my Android app on Google Play, and explore '
+          'development services for your next project.',
       features: const [
-        'Website development',
+        'Featured app: MaiBeli',
         'Web applications',
         'Custom digital solutions',
       ],
@@ -69,31 +69,25 @@ Widget buildNavigationSection({required bool isMobile}) {
     ),
   ];
 
-  if (isMobile) {
-    return Column(
-      children: cards.map((card) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: _buildNavigationCard(card),
-        );
-      }).toList(),
-    );
-  }
-
-  return Container(
-    width: double.infinity,
-    height: 440,
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: cards.map((card) {
-        return Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: _buildNavigationCard(card),
-          ),
-        );
-      }).toList(),
-    ),
+  return LayoutBuilder(
+    builder: (context, constraints) {
+      final columns = constraints.maxWidth >= 960
+          ? 3
+          : constraints.maxWidth >= 620
+          ? 2
+          : 1;
+      final cardWidth = (constraints.maxWidth - (columns - 1) * 16) / columns;
+      return Wrap(
+        spacing: 16,
+        runSpacing: 16,
+        children: cards
+            .map(
+              (card) =>
+                  SizedBox(width: cardWidth, child: _buildNavigationCard(card)),
+            )
+            .toList(),
+      );
+    },
   );
 }
 
@@ -218,11 +212,13 @@ Widget _buildNavigationCard(_NavigationCardData card) {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: const [
-                      Text(
-                        'Explore section',
-                        style: TextStyle(
-                          color: secondaryColor,
-                          fontWeight: FontWeight.w600,
+                      Flexible(
+                        child: Text(
+                          'Explore section',
+                          style: TextStyle(
+                            color: secondaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                       SizedBox(width: 8),

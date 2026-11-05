@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hachimdev/home/components/page_back_button.dart';
+import 'package:hachimdev/home/components/maibeli_feature.dart';
 
 class ServicePage extends StatelessWidget {
   const ServicePage({super.key});
@@ -13,6 +15,9 @@ class ServicePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
+        leadingWidth: 64,
+        leading: const PageBackButton(),
+        titleSpacing: 12,
         backgroundColor: backgroundColor,
         elevation: 0,
         title: const Text(
@@ -38,6 +43,10 @@ class ServicePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _buildHero(isMobile),
+
+                      const SizedBox(height: 50),
+
+                      _buildFeaturedApp(isMobile),
 
                       const SizedBox(height: 50),
 
@@ -125,6 +134,8 @@ class ServicePage extends StatelessWidget {
   // SERVICES GRID
   // ============================================================
 
+  Widget _buildFeaturedApp(bool isMobile) => const MaiBeliFeature();
+
   Widget _buildServicesGrid(bool isMobile) {
     final services = [
       const _ServiceData(
@@ -171,30 +182,26 @@ class ServicePage extends StatelessWidget {
       ),
     ];
 
-    if (isMobile) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: services.map((service) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: _buildServiceCard(service),
-          );
-        }).toList(),
-      );
-    }
-
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: services.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        mainAxisExtent: 260,
-      ),
-      itemBuilder: (context, index) {
-        return _buildServiceCard(services[index]);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final columns = constraints.maxWidth >= 900
+            ? 3
+            : constraints.maxWidth >= 580
+            ? 2
+            : 1;
+        final cardWidth = (constraints.maxWidth - (columns - 1) * 16) / columns;
+        return Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          children: services
+              .map(
+                (service) => SizedBox(
+                  width: cardWidth,
+                  child: _buildServiceCard(service),
+                ),
+              )
+              .toList(),
+        );
       },
     );
   }
@@ -281,8 +288,9 @@ class ServicePage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            runSpacing: 12,
             children: [
               Container(
                 width: 42,
